@@ -1,0 +1,21 @@
+{
+  "name": "together",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gm": "^1.17.0",
+    "async": "^0.9.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "latest",
+    "grunt": "0.4.*",
+    "grunt-aws-lambda": "latest",
+    "npm": "^2.8.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohammad Arab <boynux@gmail.com>",
+  "license": "MIT"
+}

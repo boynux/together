@@ -35,3 +35,10 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# ViM temp files
+*~
+*.tmp
+
+# grunt temp files
+dist
