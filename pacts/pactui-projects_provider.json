@@ -1,0 +1,36 @@
+{
+  "consumer": {
+    "name": "PactUI"
+  },
+  "provider": {
+    "name": "Projects Provider"
+  },
+  "interactions": [
+    {
+      "description": "a request to store location",
+      "provider_state": "i can store location",
+      "request": {
+        "method": "POST",
+        "path": "/index/handler",
+        "headers": {
+          "Accept": "text/html",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "latitude": "1.0",
+          "longitude": "2.1"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+
+        },
+        "body": "Success!"
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecificationVersion": "2.0.0"
+  }
+}

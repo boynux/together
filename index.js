@@ -1,8 +1,6 @@
 // dependencies
 var async = require('async');
 var AWS = require('aws-sdk');
-var gm = require('gm')
-.subClass({ imageMagick: true }); // Enable ImageMagick integration.
 var util = require('util');
 
 // constants
@@ -16,9 +14,6 @@ AWS.config.update({
 
 // get reference to S3 client 
 exports.handler = function(event, context, callback) {
-  // Read options from the event.
-  console.log("Reading options from event:\n", util.inspect(event, {depth: 5}));
-
   async.waterfall([
       function createTable(next) {
         var dynamodb = new AWS.DynamoDB();
@@ -39,15 +34,10 @@ exports.handler = function(event, context, callback) {
         };
 
         dynamodb.createTable(params, function(err, data) {
-          if (err) {
-            console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
-          } else {
-            console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
-          }
-
           if (!err || err.code == "ResourceInUseException") {
             next(null, true);
           } else {
+            console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
             next(err);
           }
         });
@@ -72,7 +62,6 @@ exports.handler = function(event, context, callback) {
             console.error("Unable to add location ", 1, ". Error JSON:", JSON.stringify(err, null, 2));
             next(err);
           } else {
-            console.log("PutItem succeeded:", 1);
             next();
           }
         });
