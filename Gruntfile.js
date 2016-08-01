@@ -1,5 +1,7 @@
 var grunt = require('grunt');
 grunt.loadNpmTasks('grunt-aws-lambda');
+grunt.loadNpmTasks('grunt-mocha-test');
+grunt.loadNpmTasks('grunt-npm-install');
 
 grunt.initConfig({
   lambda_invoke: {
@@ -26,6 +28,15 @@ grunt.initConfig({
       }
     }
   },
+  mochaTest: {
+    test: {
+      options: {
+        require: ['./node_modules/pact-js-mocha/src/index.js', './test/specHelper.js'],
+      },
+      src: ['test/**/*.js']
+    }
+  }
 });
 
 grunt.registerTask('deploy', ['lambda_package', 'lambda_deploy'])
+grunt.registerTask('test', ['npm-install:pact-js-mocha', 'mochaTest']);
