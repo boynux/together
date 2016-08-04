@@ -7,6 +7,7 @@
     "async": "^0.9.0"
   },
   "devDependencies": {
+    "@pact-foundation/pact-node": "^4.5.1",
     "aws-sdk": "latest",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
@@ -14,11 +15,14 @@
     "express": "^4.14.0",
     "grunt": "0.4.*",
     "grunt-aws-lambda": "latest",
+    "grunt-aws-s3": "^0.14.5",
     "grunt-mocha-test": "^0.12.7",
     "grunt-npm-install": "^0.3.0",
+    "grunt-aws-s3": "^0.2.0-alpha.3",
     "mocha": "^2.5.3",
     "npm": "^2.8.3",
     "pact-consumer-js-dsl": "^0.2.2",
+    "pact-js-mocha": "^1.0.1-alpha",
     "superagent": "^2.1.0"
   },
   "scripts": {
