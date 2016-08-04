@@ -2,6 +2,7 @@ var grunt = require('grunt');
 
 grunt.loadNpmTasks('grunt-aws-lambda');
 grunt.loadNpmTasks('grunt-aws-s3');
+grunt.loadNpmTasks('grunt-mocha-test');
 
 grunt.initConfig({
   aws_s3: {
@@ -47,6 +48,20 @@ grunt.initConfig({
       }
     }
   },
+  mochaTest: {
+    test: {
+      options: {
+        reporter: 'spec',
+        captureFile: 'results.txt',
+        quiet: false,
+        clearRequireCache: false,
+        require: ['./node_modules/pact-js-mocha/src/index.js', './test/specHelper.js' ]
+   
+      },
+      src: ['test/**/*.js']
+    }
+  }
 });
 
 grunt.registerTask('deploy', ['lambda_package', 'lambda_deploy'])
+grunt.registerTask('test', ['aws_s3', 'mochaTest'])
